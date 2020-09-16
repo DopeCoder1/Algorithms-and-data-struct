@@ -179,7 +179,7 @@ int main()
   ls_normal(n,s);
   max(n,s);
   ls_n(n,s);
-  
+
   delete[] s;
   return 0;
 }
