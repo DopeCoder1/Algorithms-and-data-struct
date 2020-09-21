@@ -28,7 +28,7 @@ public:
     this->room=room;
   }
 
-  void set_s(double s)
+  void set_size(double s)
   {
     this->s=s;
   }
@@ -51,14 +51,14 @@ public:
     return room;
   }
 
-  double get_s()
+  double get_size()
   {
     return s;
   }
 
   friend void ls_flatRoom(int n,House *ls,int rooms);
   friend void ls_flatRoomStair(int n,House *ls2,int rooms,int stairs);
-  friend void ls_s(int n,House *ls3,double size);
+  friend void ls_size(int n,House *ls3,double size);
 
 };
 
@@ -92,11 +92,11 @@ public:
     }
   }
 
-  void ls_s(int n,House *ls3,double size)
+  void ls_size(int n,House *ls3,double size)
   {
     for(int j=0;j<n;j++)
     {
-      if(ls3[j].get_s()>size)
+      if(ls3[j].get_size()>size)
       {
         cout<<"------------------"<<endl;
         cout<<size<<": "<<" "<<"size :";
@@ -106,45 +106,45 @@ public:
     }
 }
 
-void st(int *n)
+void install_rooms(int *n)
 {
   cout<<"enter rooms: ";
   cin>>*n;
 }
 
-void stas(int *n)
+void install_stairs(int *n)
 {
   cout<<"enter stairs: ";
   cin>>*n;
 }
 
-int main()
+void install(int n,int *adress,int *stair,int *room,double *s)
 {
   House *p;
-  int n;
+  cout<<"enter elements:";
+  p=new House[n];
+  for(int j=0;j<n;j++)
+  {
+    cin>> *adress >> *stair >> *room >> *s;
+    p[j].set_adress(adress);
+    p[j].set_stair(stair);
+    p[j].set_room(room);
+    p[j].set_s(s);
+  }
+}
+
+int main()
+{
+
   cin>>n;
   p=new House[n];
   string adress;
   int stair;
   int room;
   double s;
-  int rm,sv;
+  install_rooms(n);
+  install_stairs(n);
 
-  for(int j=0;j<n;j++)
-  {
-    cin>> adress >> stair >> room >> s;
-    p[j].set_adress(adress);
-    p[j].set_stair(stair);
-    p[j].set_room(room);
-    p[j].set_s(s);
-  }
-
-  st(&rm);
-  ls_flatRoom(n,p,rm);
-
-  st(&rm);
-  stas(&sv);
-  ls_flatRoomStair(n,p,rm,sv);
   delete[] p;
   return 0;
 }
