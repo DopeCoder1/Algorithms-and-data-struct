@@ -99,7 +99,7 @@ public:
       if(ls3[j].get_size()>size)
       {
         cout<<"------------------"<<endl;
-        cout<<size<<": "<<" "<<"size :";
+        cout<<size<<"< "<<" "<<"size :";
         cout<<ls3[j].adress<<endl;
         cout<<"------------------"<<endl;
       }

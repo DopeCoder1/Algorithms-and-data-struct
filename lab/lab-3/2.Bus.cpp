@@ -12,7 +12,6 @@ private:
   int num_road,start_year;
   int probeg;
 public:
-
   int *data;
   Bus(){
     fname=" ";
@@ -22,11 +21,15 @@ public:
     num_road=0;
     start_year=0;
     probeg=0;
-    cout<<"cons "<<this<<endl;
   }
-
-  Bus(string fname,string fio,string mark,string num_bus,int num_road,int start_year,int probeg)
+  Bus(string fname,string fio,string mark,string num_bus,int num_road,int start_year,int probeg,int size)
   {
+    this->Size=size;
+    this->data=new int[size];
+    for(int j=0;j<size;j++)
+    {
+      data[j]=j;
+    }
     this->fname=fname;
     this->fio=fio;
     this->mark=mark;
@@ -35,13 +38,23 @@ public:
     this->start_year=start_year;
     this->probeg=probeg;
   }
-
+  Bus(const Bus &other)
+  {
+    this->size=other.size;
+    this->data=new int[other.size];
+    for(int j=0;j<other.size;j++)
+    {
+      this->data[j]=other.data[j];
+    }
+  }
 
   friend void show(Bus *s,int size);
   friend void ls_bus(Bus *s,int size,int number);
   friend void ls_more(Bus *s,int size);
   friend void ls_more_y(Bus *s,int size);
   ~Bus(){
+    delete[] data;
+    deta=nullptr;
     cout<<"dis"<<this<<endl;
   }
 };

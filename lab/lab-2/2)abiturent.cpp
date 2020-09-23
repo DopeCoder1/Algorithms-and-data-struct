@@ -131,7 +131,7 @@ void ls_notpass(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-  if(ls[j].get_gpa()<gpa-0.1)
+  if(ls[j].get_gpa()<gpa)
   {
    cout<<"+++++++++++++++++++"<<endl;
    cout<<" didn't pass :";
@@ -147,7 +147,7 @@ void ls_n(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>=gpa-0,1 && ls[j].get_gpa()<2.1)
+    if(ls[j].get_gpa()>=gpa && ls[j].get_gpa()<gpa+0.1)
     {
       cout<<"xxxxxxxxxxxxxxxxxxxxxx"<<endl;
       cout<<" maybe pass :";

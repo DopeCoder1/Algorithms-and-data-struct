@@ -134,7 +134,7 @@ public:
         if(s[j].get_probeg()>10000)
         {
         cout<<endl<<"+++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
-        cout<<"list of bus more 10years :"<<s[j].num_bus;
+        cout<<"list of bus more 10000km probeg :"<<s[j].num_bus;
         cout<<":"<<s[j].probeg;
         cout<<endl<<"+++++++++++++++++++++++++++++++++++++++++++++++++"<<endl;
         }
