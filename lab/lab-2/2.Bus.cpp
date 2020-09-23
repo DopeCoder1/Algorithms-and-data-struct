@@ -85,7 +85,7 @@ public:
   }
 
   friend void show(Bus *s,int size);
-  friend void ls_bus(Bus *s,int size);
+  friend void ls_bus(Bus *s,int size,int number);
   friend void ls_more(Bus *s,int size);
   friend void ls_more_y(Bus *s,int size);
 
@@ -95,18 +95,21 @@ public:
   {
     for(int j=0;j<size;j++)
     {
-      cout<<s[j].fio<<" "<<s[j].num_bus<<" "<<s[j].num_road<<" "<<s[j].mark<<" "<<s[j].start_year<<" "<<s[j].probeg<<" ";
+      cout<<s[j].fio<<" "<<s[j].fname<<" "<<s[j].num_bus<<" "<<s[j].num_road<<" "<<s[j].mark<<" "<<s[j].start_year<<" "<<s[j].probeg<<" ";
     }
   }
 
-  void ls_bus(Bus *s,int size)
+  void ls_bus(Bus *s,int size,int number)
   {
     for(int j=0;j<size;j++)
     {
+      if(s[j].get_numroad()==number)
+      {
       cout<<endl<<"--------------------------------------------------"<<endl;
       cout<<"list of bus for :"<<s[j].num_bus;
       cout<<":"<<s[j].num_road;
       cout<<endl<<"--------------------------------------------------"<<endl;
+      }
       }
     }
 
@@ -140,7 +143,7 @@ public:
 
 int main()
 {
-  string fio,mark;
+  string fio,mark,fname;
   string num_bus;
   int num_road,start_year;
   int probeg;
@@ -151,8 +154,10 @@ int main()
   s=new Bus[n];
   for(int j=0;j<n;j++)
   {
-    cout<<"input fio and f.i.o:";
+    cout<<"input surname:";
     cin>>fio;
+    cout<<"input s.n: ";
+    cin>>fname;
     cout<<"input number of bus:";
     cin>>num_bus;
     cout<<"input number of road:";
@@ -165,6 +170,7 @@ int main()
     cin>>probeg;
 
     s[j].set_fio( fio);
+    s[j].set_fname( fname);
     s[j].set_numbus( num_bus);
     s[j].set_numroad( num_road);
     s[j].set_mark( mark);
@@ -173,7 +179,9 @@ int main()
   }
   show(s,n);
   cout<<endl;
-  ls_bus(s,n);
+  int number;
+  cout<<"Input number of road: ";cin>>number;
+  ls_bus(s,n,number);
   ls_more(s,n);
   ls_more_y(s,n);
   return 0;

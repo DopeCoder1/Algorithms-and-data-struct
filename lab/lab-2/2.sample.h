@@ -1,18 +1,20 @@
 #include <iostream>
+#include <string.h>
+
+using namespace std;
 
 class Bus{
 private:
+  // string fname;
   string fio,mark;
   string num_bus;
   int num_road,start_year;
   int probeg;
 public:
-  Bus();
-  Bus(string fname,);
-};
-using namespace std;
+  //getter
 
 int main()
 {
 
+  return 0;
 }

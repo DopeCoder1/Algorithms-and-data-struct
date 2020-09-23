@@ -13,58 +13,23 @@ private:
   int paper;
 
 public:
-  //setter()
-  void set_author(string author)
+  Book()
+  {
+    author=" ";
+    name=" ";
+    created=" ";
+    year=0;
+    paper=0;
+  }
+
+  Book(string author,string name,string created,int year,int paper)
   {
     this->author=author;
-  }
-
-  void set_name(string name)
-  {
     this->name=name;
-  }
-
-  void set_created(string created)
-  {
     this->created=created;
-  }
-
-  void set_year(int year)
-  {
     this->year=year;
-  }
-
-  void set_paper(int paper)
-  {
     this->paper=paper;
   }
-
-  //getter()
-  string get_author()
-  {
-    return author;
-  }
-
-  string get_name()
-  {
-    return name;
-  }
-
-  string get_created()
-  {
-    return created;
-  }
-
-  int get_year()
-  {
-    return year;
-  }
-
-  int get_paper()
-  {
-    return paper;
-  }
-
 
   friend void ls_authorBook(int n,Book *ls,string auth);
   friend void ls_created(int n,Book *ls,string crea);
@@ -77,7 +42,7 @@ public:
 
     for(int j=0;j<n;j++)
     {
-      if(ls[j].get_author()==auth)
+      if(ls[j].author==auth)
       {
       cout<<"---------------"<<endl;
       cout<<"author: ";
@@ -93,7 +58,7 @@ public:
   {
     for(int j=0;j<n;j++)
     {
-      if(ls[j].get_created()==crea)
+      if(ls[j].created==crea)
       {
       cout<<"---------------"<<endl;
       cout<<"created:";
@@ -109,7 +74,7 @@ public:
   {
     for(int j=0;j<n;j++)
     {
-      if(ls[j].get_year()>year)
+      if(ls[j].year>year)
       {
       cout<<"---------------"<<endl;
       cout<<"year:";
@@ -137,11 +102,7 @@ int main()
   for(int j=0;j<n;j++)
   {
     cin>> author >> name >> created >> year >> paper;
-    p[j].set_author(author);
-    p[j].set_name(name);
-    p[j].set_created(created);
-    p[j].set_year(year);
-    p[j].set_paper(paper);
+    p[j]=Book(author,name,created,year,paper);
   }
 
   string auth,crea;
@@ -158,6 +119,7 @@ int main()
   ls_authorBook(n,p,auth);
   ls_created(n,p,crea);
   ls_newYear(n,p,year2);
+
   delete[] p;
   return 0;
 }

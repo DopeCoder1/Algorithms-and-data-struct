@@ -8,8 +8,8 @@ private:
 public:
   Bus()
   {
-    this->x=30;
-    this->y=50;
+    x=0;
+    y=0;
   }
 
   Bus(int x,int y)
@@ -32,9 +32,9 @@ public:
 
 int main()
 {
-  Bus s(100,200);
-  s.setter(10,20);
+  Bus s(3,14);
   s.print();
 
+  
   return 0;
 }

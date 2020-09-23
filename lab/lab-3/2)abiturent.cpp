@@ -14,59 +14,23 @@ private:
   double gpa;
 
 public:
-  //setter()
-  void set_surname(string surname)
+  Abiturent()
+  {
+    surname="none";
+    name="none";
+    fname="none";
+    adress="none";
+    gpa=0;
+  }
+
+  Abiturent(string surname,string name,string fname,string adress,double gpa)
   {
     this->surname=surname;
-  }
-
-  void set_name(string name)
-  {
     this->name=name;
-  }
-
-  void set_fname(string fname)
-  {
     this->fname=fname;
-  }
-
-  void set_adress(string adress)
-  {
     this->adress=adress;
-  }
-
-  void set_gpa(double gpa)
-  {
     this->gpa=gpa;
   }
-
-  //getter()
-  string get_surname()
-  {
-    return surname;
-  }
-
-  string get_name()
-  {
-    return name;
-  }
-
-  string get_fname()
-  {
-    return fname;
-  }
-
-  string get_adress()
-  {
-    return adress;
-  }
-
-  double get_gpa()
-  {
-    return gpa;
-  }
-
-
 
   friend void show(int n,Abiturent *ls);
   friend void ls_normal(int n,Abiturent *ls,double gpa);
@@ -77,18 +41,18 @@ public:
 
 void max(int n,Abiturent *ls)
 {
-  double mx=ls[0].get_gpa();
+  double mx=ls[0].gpa;
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>mx)
+    if(ls[j].gpa>mx)
     {
-      mx=ls[j].get_gpa();
+      mx=ls[j].gpa;
     }
   }
 
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()==mx)
+    if(ls[j].gpa==mx)
     {
       cout<<"mmmmmmmmmmmmmmmmmmmmmmmm"<<endl;
       cout<<"max score: ";
@@ -116,7 +80,7 @@ void ls_normal(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>=gpa)
+    if(ls[j].gpa>=gpa)
     {
       cout<<"****************"<<endl;
       cout<<"pass :";
@@ -131,7 +95,7 @@ void ls_notpass(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-  if(ls[j].get_gpa()<gpa-0.1)
+  if(ls[j].gpa<gpa-0.1)
   {
    cout<<"+++++++++++++++++++"<<endl;
    cout<<" didn't pass :";
@@ -147,7 +111,7 @@ void ls_n(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>=gpa-0,1 && ls[j].get_gpa()<2.1)
+    if(ls[j].gpa>=gpa-0,1 && ls[j].gpa<2.1)
     {
       cout<<"xxxxxxxxxxxxxxxxxxxxxx"<<endl;
       cout<<" maybe pass :";
@@ -169,24 +133,10 @@ int main()
   s=new Abiturent[n];
   string name,surname,fname,adress;
   double gpa;
-
   for(int j=0;j<n;j++)
   {
-    cout<<"enter surname: ";
-    cin>> surname;
-    cout<<"enter name: ";
-    cin >> name;
-    cout<<"enter fname: ";
-    cin >> fname;
-    cout<<"enter adress: ";
-    cin >> adress;
-    cout<<"enter gpa: ";
-    cin >> gpa;
-    s[j].set_name(name);
-    s[j].set_surname(surname);
-    s[j].set_fname(fname);
-    s[j].set_adress(adress);
-    s[j].set_gpa(gpa);
+    cin>> surname >> name >> fname >>adress >>gpa;
+    s[j]=Abiturent(surname,name,fname,adress,gpa);
   }
   cout<<endl;
   double new_gpa;
