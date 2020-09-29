@@ -116,7 +116,7 @@ void ls_normal(int n,Abiturent *ls,double gpa)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>=gpa)
+    if(ls[j].get_gpa()>gpa)
     {
       cout<<"****************"<<endl;
       cout<<"pass :";
