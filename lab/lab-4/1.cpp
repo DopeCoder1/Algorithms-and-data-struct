@@ -7,7 +7,7 @@ class Pasport{
 protected:
   string surname,name,fname;
   int day,month,year,id;
-  string gender;
+  string gender,country;
 public:
   Pasport()
   {
@@ -19,9 +19,10 @@ public:
     year=0;
     gender="";
     id=0;
+    country="";
   }
 
-  Pasport(string surname,string name,string fname,int day,int month,int year,string gender,int id)
+  Pasport(string surname,string name,string fname,int day,int month,int year,string gender,int id,string country)
   {
     this->surname=surname;
     this->name=name;
@@ -31,6 +32,7 @@ public:
     this->year=year;
     this->gender=gender;
     this->id=id;
+    this->country=country;
   }
 };
 
@@ -50,7 +52,7 @@ public:
     f_year=0;
   }
 
-  ForeignPassport(string surname,string name,string fname,int day,int month,int year,string gender,int id,int f_id,string f_country,int f_day,int f_month,int f_year):Pasport(surname,name,fname,day,month,year,gender,id)
+  ForeignPassport(string surname,string name,string fname,int day,int month,int year,string gender,int id,string country,int f_id,string f_country,int f_day,int f_month,int f_year):Pasport(surname,name,fname,day,month,year,gender,id,country)
   {
     this->f_id=f_id;
     this->f_country=f_country;
@@ -62,14 +64,14 @@ public:
 
   void print(){
     cout<<"Passport: "<<endl<<"Fio: "<<surname<<" "<<name<<" "<<fname<<endl<<"date: "<<day<<"/"<<month<<"/"<<year<<endl<<"id: "<<id<<endl<<"gender: "<<gender<<endl;
-    cout<<endl;
-    cout<<"ForeignPassport: "<<endl<<"Visa: "<<endl<<"Country: "<<f_country<<endl<<"date: "<<day<<"/"<<month<<"/"<<f_year<<endl<<"ForeignPassport id:"<<f_id;
+    cout<<"born in:"<<country<<endl;
+    cout<<endl<<"ForeignPassport: "<<endl<<"Visa: "<<endl<<"Country: "<<f_country<<endl<<"date: "<<day<<"/"<<month<<"/"<<f_year<<endl<<"ForeignPassport id:"<<f_id<<endl;
   }
 };
 
 int main()
 {
-  ForeignPassport p("Ailmbayev","Dias","Teltayulu",15,1,2002,"M",228,667,"Kazakhstan",30,9,2021);
+  ForeignPassport p("Ailmbayev","Dias","Teltayulu",15,1,2002,"M",228,"Kazakhstan",667,"Kazakhstan",30,9,2021);
   p.print();
 
   return 0;
