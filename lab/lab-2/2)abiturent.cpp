@@ -5,7 +5,6 @@ using namespace std;
 
 
 class Abiturent{
-
 private:
   string surname;
   string name;
@@ -65,7 +64,6 @@ public:
   {
     return gpa;
   }
-
 
 
   friend void show(int n,Abiturent *ls);

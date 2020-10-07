@@ -12,7 +12,9 @@ private:
   string fname;
   string adress;
   double gpa;
-
+  int n;
+  int *arr;
+  
 public:
   Abiturent()
   {
@@ -32,6 +34,10 @@ public:
     this->gpa=gpa;
   }
 
+  ~Abiturent()
+  {
+
+  }
   friend void show(int n,Abiturent *ls);
   friend void ls_normal(int n,Abiturent *ls,double gpa);
   friend void ls_notpass(int n,Abiturent *ls,double gpa);

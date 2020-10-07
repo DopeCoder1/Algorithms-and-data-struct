@@ -143,6 +143,6 @@ int main()
   cout<<"enter number of road: ";cin>>number_of_road;
   ls_bus(s,n,number_of_road);
   ls_more(s,n);
-
+  
   return 0;
 }
