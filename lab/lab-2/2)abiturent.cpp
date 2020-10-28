@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+#include <string.h>
 
 using namespace std;
 
@@ -14,57 +14,14 @@ private:
 
 public:
   //setter()
-  void set_surname(string surname)
+  Abiturent(surname,name,fname,adress,gpa)
   {
     this->surname=surname;
-  }
-
-  void set_name(string name)
-  {
     this->name=name;
-  }
-
-  void set_fname(string fname)
-  {
     this->fname=fname;
-  }
-
-  void set_adress(string adress)
-  {
     this->adress=adress;
-  }
-
-  void set_gpa(double gpa)
-  {
     this->gpa=gpa;
   }
-
-  //getter()
-  string get_surname()
-  {
-    return surname;
-  }
-
-  string get_name()
-  {
-    return name;
-  }
-
-  string get_fname()
-  {
-    return fname;
-  }
-
-  string get_adress()
-  {
-    return adress;
-  }
-
-  double get_gpa()
-  {
-    return gpa;
-  }
-
 
   friend void show(int n,Abiturent *ls);
   friend void ls_normal(int n,Abiturent *ls,double gpa);
@@ -75,18 +32,18 @@ public:
 
 void max(int n,Abiturent *ls)
 {
-  double mx=ls[0].get_gpa();
+  double mx=ls[0].gpa;
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>mx)
+    if(ls[j].gpa>mx)
     {
-      mx=ls[j].get_gpa();
+      mx=ls[j].gpa;
     }
   }
 
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()==mx)
+    if(ls[j].gpa==mx)
     {
       cout<<"mmmmmmmmmmmmmmmmmmmmmmmm"<<endl;
       cout<<"max score: ";
@@ -110,11 +67,11 @@ void show(int n,Abiturent *ls)
   }
 }
 
-void ls_normal(int n,Abiturent *ls,double gpa)
+void ls_normal(int n,Abiturent *ls,double gpas)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>gpa)
+    if(ls[j].gpa>gpas)
     {
       cout<<"****************"<<endl;
       cout<<"pass :";
@@ -125,11 +82,11 @@ void ls_normal(int n,Abiturent *ls,double gpa)
   }
 }
 
-void ls_notpass(int n,Abiturent *ls,double gpa)
+void ls_notpass(int n,Abiturent *ls,double gpas)
 {
   for(int j=0;j<n;j++)
   {
-  if(ls[j].get_gpa()<gpa)
+  if(ls[j].gpa<gpas)
   {
    cout<<"+++++++++++++++++++"<<endl;
    cout<<" didn't pass :";
@@ -141,11 +98,11 @@ void ls_notpass(int n,Abiturent *ls,double gpa)
 
 }
 
-void ls_n(int n,Abiturent *ls,double gpa)
+void ls_n(int n,Abiturent *ls,double gpas)
 {
   for(int j=0;j<n;j++)
   {
-    if(ls[j].get_gpa()>=gpa && ls[j].get_gpa()<gpa+0.1)
+    if(ls[j].gpa()>=gpa && ls[j].get_gpa()<gpa+0.1)
     {
       cout<<"xxxxxxxxxxxxxxxxxxxxxx"<<endl;
       cout<<" maybe pass :";

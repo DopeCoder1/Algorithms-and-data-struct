@@ -21,9 +21,6 @@ public:
 class CircleSquare:public Circle,public Square{
 public:
     CircleSquare(double var3):Square(var3*2),Circle(var3){}
-    void sw(){
-
-    }
 };
 
 int main()
