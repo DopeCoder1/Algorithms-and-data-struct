@@ -1,5 +1,4 @@
 #include <iostream>
-#include <string.h>
 #include <vector>
 #include <algorithm>
 
@@ -65,54 +64,52 @@ public:
 
 
   void print(){
-    cout<<"Passport: "<<endl<<"Fio: "<<surname<<" "<<name<<" "<<fname<<endl<<"date: "<<day<<"/"<<month<<"/"<<year<<endl<<"id: "<<id<<endl<<"gender: "<<gender<<endl;
+    cout<<endl<<"Passport: "<<endl<<"Fio: "<<surname<<" "<<name<<" "<<fname<<endl<<"date: "<<day<<"/"<<month<<"/"<<year<<endl<<"id: "<<id<<endl<<"gender: "<<gender<<endl;
     cout<<"born in:"<<country<<endl;
     cout<<endl<<"ForeignPassport: "<<endl<<"Visa: "<<endl<<"Country: "<<f_country<<endl<<"date: "<<day<<"/"<<month<<"/"<<f_year<<endl<<"ForeignPassport id:"<<f_id<<endl;
   }
 };
 
-void filter(vector<ForeignPassport> &v)
+bool compare(const ForeignPassport &v,const ForeignPassport &v2)
 {
-  auto r=remove_if(v.begin(),v.end(),[](const ForeignPassport &var)
-  {
-    return var.country == "UA";
-  });
-
-  v.erase(r,v.end());
+  return v.year < v2.year;
 }
 
+bool compare2(const ForeignPassport& v)
+{
+  return v.country != "UA";
+}
+
+void printf(vector<ForeignPassport> &v)
+{
+  for(int j=0;j<v.size();j++)
+  {
+    v[j].print();
+  }
+}
+
+void sorts(vector<ForeignPassport> &v)
+{
+  sort(v.begin(),v.end(),compare);
+}
+
+void filter(vector<ForeignPassport>& v)
+{
+  auto ls=remove_if(v.begin(),v.end(),compare2);
+  v.erase(ls,v.end());
+}
 int main()
 {
   vector<ForeignPassport> v;
-
   v.push_back(ForeignPassport("Ailmbayev","Dias","Teltayulu",15,1,2002,"M",228,"KZ",667,"Kazakhstan",30,9,2021));
-  v.push_back(ForeignPassport("Vladmimir","Zelensky","Teltayulu",15,1,1989,"M",228,"UA",667,"Ukraine",30,9,2021));
-  for(int j=0;j<v.size();j++)
-  {
-    cout<<"--------------------------------------------------"<<endl;
-    v[j].print();
-  }
-
-  sort(v.begin(),v.end(),[](const ForeignPassport &f,const ForeignPassport &f2)
-  {
-    return f.year < f2.year;
-  });
-
-  cout<<"new list"<<endl;
-  for(int j=0;j<v.size();j++)
-  {
-    cout<<"-------------------------------------------------"<<endl;
-    v[j].print();
-  }
-  cout<<"--------------------------------------------------"<<endl;
-
-  cout<<"filter"<<endl;
+  v.push_back(ForeignPassport("Ailmbayev","Diaz","Teltayulu",15,1,2000,"M",228,"UA",667,"Ukraine",30,9,2021));
+  printf(v);
+  sorts(v);
+  cout<<endl<<"----------- after sort -------------------"<<endl;
+  printf(v);
   filter(v);
-  for(int j=0;j<v.size();j++)
-  {
-    cout<<"-------------------------------------------------"<<endl;
-    v[j].print();
-  }
+  cout<<endl<<"----------- after filter -------------------"<<endl;
+  printf(v);
 
   return 0;
 }

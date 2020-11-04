@@ -71,22 +71,24 @@ public:
   }
 };
 
+bool compare(const ForeignPassport& v,const ForeignPassport& v2)
+{
+  return v.year < v2.year;
+}
+
+bool compare2(const ForeignPassport& v)
+{
+  return v.country != "KZ";
+}
+
 void sorts(vector<ForeignPassport> &v)
 {
-  cout<<endl<<"after sort"<<endl;
-  sort(v.begin(),v.end(),[](const ForeignPassport &var,const ForeignPassport &var2)
-  {
-    return var.year < var2.year;
-  });
+  sort(v.begin(),v.end(),compare);
 }
 
 void filter(vector<ForeignPassport> &v)
 {
-  cout<<endl<<"after filter"<<endl;
-  auto ls=remove_if(v.begin(),v.end(),[](const ForeignPassport &var)
-  {
-    return var.country != "KZ";
-  });
+  auto ls=remove_if(v.begin(),v.end(),compare2);
   v.erase(ls,v.end());
 }
 
@@ -99,6 +101,7 @@ void printf(vector<ForeignPassport> &v)
   cout<<"\n";
 }
 
+
 int main()
 {
   vector<ForeignPassport> v;
@@ -106,8 +109,10 @@ int main()
   v.push_back(ForeignPassport("Vladmimir","Putin","Vladmimirovich",7,9,1952,"M",330,"RU",667,"Russian",30,9,2021));
   printf(v);
   sorts(v);
+  cout<<endl<<"------------------- after sort ------------"<<endl;
   printf(v);
   filter(v);
+  cout<<endl<<"------------------- after filter ------------"<<endl;
   printf(v);
 
   return 0;
