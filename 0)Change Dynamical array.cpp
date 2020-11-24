@@ -16,6 +16,7 @@ void print_arr(int size,int *arr)
   {
     cout<<arr[j]<<" ";
   }
+  cout<<endl;
 }
 
 
@@ -30,6 +31,7 @@ void push_back(int &size,int *&arr,int value)
   new_arr[size-1] = value;
   delete[] arr;
   arr=new_arr;
+
 }
 
 
@@ -66,8 +68,6 @@ void pop_front(int &size,int *&arr)
   {
     new_arr[j-1]=arr[j];
   }
-
-  delete[] arr;
   arr=new_arr;
 }
 
